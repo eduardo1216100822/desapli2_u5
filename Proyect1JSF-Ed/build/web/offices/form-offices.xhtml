@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.officeFormTitle}</title>
+    </h:head>                <h2>#{str.officeFormHeader}</h2>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="content">
+                <h2>#{str.officeFormHeader}</h2>
+                <p:fieldset legend="#{str.officeLegendForm}">
+                    <h:form>
+                        <h:panelGrid columns="1">
+                            <p:inputText placeholder="#{str.officeNamePrompt}" value="#{officeBean.office.nameAttendant}"></p:inputText>
+                            <p:inputText placeholder="#{str.officeOcupationPrompt}" value="#{officeBean.office.ocupation}"></p:inputText>
+                            <p:inputText placeholder="#{str.officeAreaPrompt}" value="#{officeBean.office.area}"></p:inputText>
+                            <p:selectOneMenu value="#{officeBean.office.ip.idIp}">
+                                <f:selectItems value="#{officeBean.ips}" var="r" itemLabel="#{r.dirIp}" itemValue="#{r.idIp}"></f:selectItems>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <p:commandButton value="#{str.buttonSave}" action="#{officeBean.save()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}" action="#{officeBean.delete()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}" action="#{officeBean.cancel()}"></p:commandButton>
+
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
